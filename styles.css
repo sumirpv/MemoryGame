@@ -1,0 +1,166 @@
+:root {
+  --primary-bg: linear-gradient(135deg, #1e3c72, #2a5298);
+  --card-front: #2c3e50;
+  --card-back: #3498db;
+  --text-color: white;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="light"] {
+  --primary-bg: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  --card-front: #ffffff;
+  --card-back: #e0e0e0;
+  --text-color: #333333;
+  --card-shadow: rgba(0, 0, 0, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--primary-bg);
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+h1 {
+  color: var(--text-color);
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.stats {
+  color: var(--text-color);
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+
+.game-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  max-width: 800px;
+  perspective: 1000px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.card {
+  height: 150px;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform: scale(1);
+  transition: transform 0.5s;
+}
+
+.card:active {
+  transform: scale(0.95);
+}
+
+.card.flip {
+  transform: rotateY(180deg);
+}
+
+.front {
+  background-color: var(--card-front);
+  transform: rotateY(180deg);
+}
+
+.back {
+  background-color: var(--card-back);
+  background-image: linear-gradient(45deg, var(--card-back), var(--card-back));
+}
+
+.front,
+.back {
+  box-shadow: 0 4px 8px var(--card-shadow);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+}
+
+.restart-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 5px;
+  background: #e74c3c;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.restart-btn:hover {
+  background: #c0392b;
+}
+
+.game-header {
+  width: 90%;
+  max-width: 800px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-color);
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+.controls button,
+.controls select {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background: #3498db;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.controls button:hover {
+  background: #2980b9;
+}
+
+.high-scores {
+  width: 90%;
+  max-width: 800px;
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: var(--text-color);
+}
+
+.high-scores ul {
+  list-style: none;
+  padding: 10px 0;
+}
+
+.high-scores li {
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
